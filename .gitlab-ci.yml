@@ -3,7 +3,6 @@ image: openjdk:11-stretch
 stages:
   - test
   - build
-  - deploy
 
 before_script:
   - echo "Start CI/CD"
