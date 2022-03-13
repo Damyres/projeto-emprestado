@@ -2,6 +2,7 @@ image: openjdk:11-stretch
 
 stages:
   - build
+  - deploy
 
 before_script:
   - echo "Start CI/CD"
@@ -11,3 +12,14 @@ build:
   script:
     - chmod +x gradlew
     - ./gradlew build
+
+deploy:
+  stage: deploy
+  image: ruby:latest
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_API_NAME --api-key=$HEROKU_API_KEY
+  only:
+    - main
