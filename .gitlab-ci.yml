@@ -2,16 +2,24 @@ image: openjdk:11-stretch
 
 stages:
   - build
+  - test
   - deploy
-
-before_script:
-  - echo "Start CI/CD"
 
 build:
   stage: build
   script:
     - chmod +x gradlew
-    - ./gradlew build
+    - ./gradlew assemble
+  artifacts:
+    paths:
+      - build/libs/*.jar
+    expire_in: 1 week
+
+test:
+  stage: test
+  script:
+    - chmod +x gradlew
+    - ./gradlew check
 
 deploy:
   stage: deploy
