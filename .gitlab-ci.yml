@@ -1,21 +1,14 @@
 image: openjdk:11-stretch
 
 stages:
-  - test
   - build
 
 before_script:
   - echo "Start CI/CD"
-
-test:
-  stage: test
-  script:
-    - chmod +x gradlew
-    - ./gradlew check
-
+  -
 build:
   stage: build
   script:
     - chmod +x gradlew
-    - ./gradlew assemble
+    - ./gradlew build
 
