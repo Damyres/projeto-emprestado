@@ -12,7 +12,7 @@ build:
     - ./gradlew assemble
   artifacts:
     paths:
-      - build/libs/*.jar
+      - build/libs/dsmovie-0.0.1-SNAPSHOT.jar
     expire_in: 1 week
 
 test:
