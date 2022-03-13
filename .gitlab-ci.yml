@@ -1,17 +1,20 @@
+image: openjdk:11-stretch
+
 stages:
   - test
   - build
   - deploy
 
+before_script:
+  - echo "Start CI/CD"
+
 test:
   stage: test
-  image: maven:3.8.3-jdk-11
-  script: mvn test
+  script: ./gradlew check
 
 build:
   stage: build
-  image: maven:3.8.3-jdk-11
-  script: mvn clean && mvn install
+  script: ./gradlew assemble
 
 deploy:
   stage: deploy
