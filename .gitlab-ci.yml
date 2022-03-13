@@ -5,7 +5,7 @@ stages:
 
 before_script:
   - echo "Start CI/CD"
-  -
+
 build:
   stage: build
   script:
