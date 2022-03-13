@@ -27,6 +27,8 @@ public class ScoreService {
 	if(optionalUser.isEmpty()) {
 	  user.setEmail(dto.getEmail());
 	  user = userRepository.saveAndFlush(user);
+	} else {
+	  user = optionalUser.get();
 	}
 
 	var optionalMovie = movieRepository.findById(dto.getMovieId());
@@ -40,7 +42,7 @@ public class ScoreService {
 	score.setUser(user);
 	score.setValue(dto.getScore());
 
-	scoreRepository.save(score);
+	scoreRepository.saveAndFlush(score);
 
 	double sum = 0;
 	for(Score s : movie.getScores()) {
