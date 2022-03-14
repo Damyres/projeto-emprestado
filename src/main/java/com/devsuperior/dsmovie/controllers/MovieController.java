@@ -18,7 +18,7 @@ public class MovieController {
 
   private final MovieService service;
 
-  @GetMapping("/")
+  @GetMapping
   public ResponseEntity<Page<MovieDTO>> findAll(Pageable pageable) {
 	return ResponseEntity.ok().body(service.findAll(pageable));
   }
