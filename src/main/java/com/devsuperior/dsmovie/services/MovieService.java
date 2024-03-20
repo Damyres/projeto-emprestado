@@ -39,5 +39,8 @@ public class MovieService {
 	var newMovie = repository.save(movie);
 	return new MovieDTO(newMovie);
   }
+  public void Visualizar(){
+      System.out.println("Ver filme");
+  }
 
 }
